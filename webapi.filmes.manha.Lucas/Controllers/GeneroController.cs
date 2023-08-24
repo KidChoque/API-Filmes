@@ -43,7 +43,7 @@ namespace webapi.filmes.manha.Lucas.Controllers
         [HttpGet]
 
 
-
+        //ListarGwnero=GET
         public IActionResult ListarGenero()
         {
 
@@ -64,6 +64,31 @@ namespace webapi.filmes.manha.Lucas.Controllers
 
 
            
+        }
+
+        // InserirGenero = Post
+        /// <summary>
+        /// Endpoint que aciona método de cadastro de gênero
+        /// </summary>
+        /// <param name="novoGenero">Objeto recebido na requisição</param>
+        /// <returns>status code 201(Created)</returns>
+        [HttpPost]
+        public IActionResult InserirGenero(GeneroDomain novoGenero)
+        {
+            try
+            {
+                // FAzendo a chamada para o método cadastrar 
+                _generoRepository.Cadastrar(novoGenero);
+
+                return StatusCode(201);
+            }
+            catch (Exception Erro)
+            {
+                // Retorna status code(400) e a mensagem do erro
+                return BadRequest(Erro.Message);
+                
+            }
+            
         }
 
 

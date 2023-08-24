@@ -8,7 +8,7 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 {
     public class GeneroRepository : IGeneroRepository
     {
-        private string StringConexao = "Data Source = NOTE08-S14; Initial Catalog = Filmes; User ID = SA; Pwd=senai@134;";
+        private string StringConexao = "Data Source = NOTE08-S14; Initial Catalog = Filmes; User ID = sa; Pwd=Senai@134";
 
         public List<GeneroDomain> ListarTodos()
         {
@@ -16,13 +16,13 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 
             using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                string querySelectAll = "SELECT IdGenro,Nome FROM Genero";
+                string querySelectAll = "SELECT IdGenero,Nome FROM Genero";
 
                 con.Open();
 
                 SqlDataReader rdr;
 
-                using (SqlCommand cmd = new SqlCommand(querySelectAll))
+                using (SqlCommand cmd = new SqlCommand(querySelectAll,con))
                 {
                     rdr = cmd.ExecuteReader();
 
@@ -37,30 +37,59 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 
                         ListaGenero.Add(genero);
                     }
-                return ListaGenero;
+                
                 }
 
             }
+            return ListaGenero;
+
         }
+
+        /// <summary>
+        /// Cadastrar um novo gênero
+        /// </summary>
+        /// <param name="novoGenero">Objeto com as informações que serão cadastradas</param>
+          public void Cadastrar(GeneroDomain novoGenero)
+        {
+            //Declara a conexão com o BAnco de Dados passando a string de conexão como parâmetro
+           using(SqlConnection con = new SqlConnection(StringConexao)) 
+            {
+                string queryInsert = "INSERT INTO Genero(Nome) VALUES('"+ novoGenero.Nome + "')";
+      
+                //Declara o SqlCommand passando a query que será executada e a conexão com o bd
+                using(SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    //Abre a conexão com o banco de dados
+                    con.Open();
+
+                    //Comando que executa a query (queryInsert)
+                    cmd.ExecuteNonQuery();  
+                }
+            }
+        }
+
+
+
+
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
             throw new NotImplementedException();
         }
+
+
 
         public void AtualizarIdUrl(int id, GeneroDomain genero)
         {
             throw new NotImplementedException();
         }
 
+
         public GeneroDomain BuscarPorId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(GeneroDomain novoGenero)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public void Deletar(int id)
         {

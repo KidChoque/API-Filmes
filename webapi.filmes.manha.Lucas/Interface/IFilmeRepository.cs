@@ -2,7 +2,7 @@
 
 namespace webapi.filmes.manha.Lucas.Interface
 {
-    public class IFilmeRepository
+    public interface IFilmeRepository
     {
         void Cadastrar(FilmeDomain novoFilme);
 
@@ -15,7 +15,6 @@ namespace webapi.filmes.manha.Lucas.Interface
         void Deletar(int id);
 
         FilmeDomain BuscarPorId(int id);
-
 
     }
 }
