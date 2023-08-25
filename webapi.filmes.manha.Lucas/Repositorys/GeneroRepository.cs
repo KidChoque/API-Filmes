@@ -23,6 +23,7 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                 SqlDataReader rdr;
 
                 using (SqlCommand cmd = new SqlCommand(querySelectAll,con))
+
                 {
                     rdr = cmd.ExecuteReader();
 
@@ -54,11 +55,15 @@ namespace webapi.filmes.manha.Lucas.Repositorys
             //Declara a conexão com o BAnco de Dados passando a string de conexão como parâmetro
            using(SqlConnection con = new SqlConnection(StringConexao)) 
             {
-                string queryInsert = "INSERT INTO Genero(Nome) VALUES('"+ novoGenero.Nome + "')";
+                                                               // Anti Sql Injection
+                string queryInsert = "INSERT INTO Genero(Nome) VALUES(@Nome)";
       
                 //Declara o SqlCommand passando a query que será executada e a conexão com o bd
                 using(SqlCommand cmd = new SqlCommand(queryInsert, con))
                 {
+
+                    cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
+
                     //Abre a conexão com o banco de dados
                     con.Open();
 
@@ -70,6 +75,24 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 
 
 
+        public void Deletar(int id)
+        {
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryDelete = "DELETE FROM Genero WHERE IdGenero = @IdGenero";
+
+                using(SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("@IdGenero",id);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery(); 
+                }
+            } ;
+
+     
+        }
 
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
@@ -89,15 +112,6 @@ namespace webapi.filmes.manha.Lucas.Repositorys
             throw new NotImplementedException();
         }
 
-      
-
-        public void Deletar(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-      
-
-    
+        
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.filmes.manha.Lucas</name>
+    </assembly>
+    <members>
+        <member name="P:webapi.filmes.manha.Lucas.Controllers.GeneroController._generoRepository">
+            <summary>
+            Objeto _generoRepository que irá receber todos os métodos definidos na Interface IGeneroRepository
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Controllers.GeneroController.#ctor">
+            <summary>
+            Instancia o objeto _generoRepository para que haja referência aos métodos no repositório 
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Controllers.GeneroController.ListarGenero">
+            <summary>
+            Endpoint que aciona o método ListarTodos no repositório
+            </summary>
+            <returns>Resposta para o usuário(front-end)</returns>
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Controllers.GeneroController.InserirGenero(webapi.filmes.manha.Lucas.Domains.GeneroDomain)">
+            <summary>
+            Endpoint que aciona método de cadastro de gênero
+            </summary>
+            <param name="novoGenero">Objeto recebido na requisição</param>
+            <returns>status code 201(Created)</returns>
+        </member>
+        <member name="T:webapi.filmes.manha.Lucas.Interface.IGeneroRepository">
+            <summary>
+            Interface responsável pelo repositório GeneroRepository 
+            Definir os métodos que serão implementados pelo GeneroRepository
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Interface.IGeneroRepository.Cadastrar(webapi.filmes.manha.Lucas.Domains.GeneroDomain)">
+            <summary>
+            Cadastra um objeto, sem retorno
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Interface.IGeneroRepository.ListarTodos">
+            <summary>
+            Lista os objetos da Lista GeneroDomain e os retorna.
+            </summary>
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Interface.IGeneroRepository.AtualizarIdCorpo(webapi.filmes.manha.Lucas.Domains.GeneroDomain)">
+            Atualiza o objeto passando seu id no corpo da requisição
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Interface.IGeneroRepository.AtualizarIdUrl(System.Int32,webapi.filmes.manha.Lucas.Domains.GeneroDomain)">
+            Atualiza o objeto pelo id na URL
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Interface.IGeneroRepository.Deletar(System.Int32)">
+            Deleta o objeto pelo id
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Interface.IGeneroRepository.BuscarPorId(System.Int32)">
+            Busca objeto pelo ID
+        </member>
+        <member name="M:webapi.filmes.manha.Lucas.Repositorys.GeneroRepository.Cadastrar(webapi.filmes.manha.Lucas.Domains.GeneroDomain)">
+            <summary>
+            Cadastrar um novo gênero
+            </summary>
+            <param name="novoGenero">Objeto com as informações que serão cadastradas</param>
+        </member>
+    </members>
+</doc>

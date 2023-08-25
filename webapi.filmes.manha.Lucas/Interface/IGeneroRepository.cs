@@ -31,5 +31,6 @@ namespace webapi.filmes.manha.Lucas.Interface
 
         /// Busca objeto pelo ID
         GeneroDomain BuscarPorId(int id);
+       
     }
 }

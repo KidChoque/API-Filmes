@@ -36,3 +36,5 @@ C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.
 C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\obj\Debug\net7.0\webapi.filmes.manha.Lucas.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\webapi.filmes.manha.Lucas.xml
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\obj\Debug\net7.0\webapi.filmes.manha.Lucas.xml

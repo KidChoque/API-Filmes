@@ -91,6 +91,29 @@ namespace webapi.filmes.manha.Lucas.Controllers
             
         }
 
+        [HttpDelete ("id}")]
+        //DeletarGenero = Delete
+        public IActionResult DeletarGenero(int id)
+    {
+            try
+            {
+                _generoRepository.Deletar(id);
+                return StatusCode(200);
+
+            }
+            catch (Exception Erro)
+            {
+                return BadRequest(Erro.Message);
+            }
+       
+            
+            
+
 
     }
+
+
+
+    }
+    
 }
