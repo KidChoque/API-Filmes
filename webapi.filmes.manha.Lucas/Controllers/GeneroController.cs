@@ -31,7 +31,7 @@ namespace webapi.filmes.manha.Lucas.Controllers
         /// <summary>
         /// Instancia o objeto _generoRepository para que haja referência aos métodos no repositório 
         /// </summary>
-        public GeneroController() 
+        public GeneroController()
         {
             _generoRepository = new GeneroRepository();
         }
@@ -63,7 +63,7 @@ namespace webapi.filmes.manha.Lucas.Controllers
             }
 
 
-           
+
         }
 
         // InserirGenero = Post
@@ -86,15 +86,15 @@ namespace webapi.filmes.manha.Lucas.Controllers
             {
                 // Retorna status code(400) e a mensagem do erro
                 return BadRequest(Erro.Message);
-                
+
             }
-            
+
         }
 
-        [HttpDelete ("id}")]
+        [HttpDelete("{id}")]
         //DeletarGenero = Delete
         public IActionResult DeletarGenero(int id)
-    {
+        {
             try
             {
                 _generoRepository.Deletar(id);
@@ -105,15 +105,52 @@ namespace webapi.filmes.manha.Lucas.Controllers
             {
                 return BadRequest(Erro.Message);
             }
-       
-            
-            
-
-
-    }
 
 
 
-    }
-    
+
+
+        }
+
+        [HttpGet("{id}")]
+        //BuscarPorId = Get by Id
+        public IActionResult BuscarPorId(int id)
+        {
+            try
+            {
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(id);
+
+                if (generoBuscado == null)
+                {
+                    return NotFound("Nenhum gênero foi encontrado")
+                ;
+                };
+
+                return Ok(generoBuscado);
+            }
+            catch (Exception Erro)
+            {
+                return BadRequest(Erro.Message);
+            }
+
+        }
+
+        [HttpPatch("{id}")]
+
+        public IActionResult AtualizarIdUrl(int id,GeneroDomain genero)
+        {
+            try
+            {
+              genro
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+    } 
 }

@@ -44,6 +44,8 @@ app.UseSwaggerUI(options =>
 });
 //Termina a configuração do Swagger
 
-app.MapControllers();   
-        
+app.MapControllers();
+
+app.UseHttpsRedirection();
+
 app.Run();

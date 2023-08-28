@@ -61,5 +61,13 @@
             </summary>
             <param name="novoGenero">Objeto com as informações que serão cadastradas</param>
         </member>
+        <member name="M:webapi.filmes.manha.Lucas.Repositorys.GeneroRepository.BuscarPorId(System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="id"></param>
+             <returns></returns>
+             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
     </members>
 </doc>

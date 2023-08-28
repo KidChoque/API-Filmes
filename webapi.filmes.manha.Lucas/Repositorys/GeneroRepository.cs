@@ -10,6 +10,8 @@ namespace webapi.filmes.manha.Lucas.Repositorys
     {
         private string StringConexao = "Data Source = NOTE08-S14; Initial Catalog = Filmes; User ID = sa; Pwd=Senai@134";
 
+        public GeneroDomain Nome { get; private set; }
+
         public List<GeneroDomain> ListarTodos()
         {
             List<GeneroDomain> ListaGenero = new List<GeneroDomain>();
@@ -88,30 +90,72 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                     con.Open();
 
                     cmd.ExecuteNonQuery(); 
+
+
                 }
             } ;
 
      
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public GeneroDomain? BuscarPorId(int id)
+        {
+
+
+
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryBuscarPorId = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero = @IdGenero ";
+
+            con.Open();
+
+            SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(queryBuscarPorId, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+
+                    rdr = cmd.ExecuteReader();
+
+
+                    if (rdr.Read())
+                    {
+                        GeneroDomain generoBuscado = new GeneroDomain()
+                        {
+
+                            IdGenero = Convert.ToInt32(rdr["IdGenero"]),
+                            Nome = rdr["Nome"].ToString()
+                        };
+
+                        return generoBuscado;
+                }
+                    return null;
+                       
+
+                    
+            }
+        }
+
+
+    }
+
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
             throw new NotImplementedException();
         }
 
-
-
         public void AtualizarIdUrl(int id, GeneroDomain genero)
         {
             throw new NotImplementedException();
         }
-
-
-        public GeneroDomain BuscarPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        
+    
+    
     }
-}
+    }
