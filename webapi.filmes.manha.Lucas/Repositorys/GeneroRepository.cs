@@ -148,12 +148,48 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryAtualizarIdCorpo = "Update Genero set Nome = @Nome Where IdGenero = @IdGenero";
+
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryAtualizarIdCorpo, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
+
+                    cmd.ExecuteNonQuery(); 
+
+                }
+            }
+          
         }
 
         public void AtualizarIdUrl(int id, GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(StringConexao))
+            {
+                string queryAtualizarIdUrl = "Update Genero set Nome = @Nome Where IdGenero = @IdGenero";
+
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryAtualizarIdUrl, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome);
+
+                    cmd.ExecuteNonQuery();
+                   
+                }
+
+               ;
+
+
+            } ;
+
         }
     
     

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using webapi.filmes.manha.Lucas.Domains;
 using webapi.filmes.manha.Lucas.Interface;
 using webapi.filmes.manha.Lucas.Repositorys;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace webapi.filmes.manha.Lucas.Controllers
 {
@@ -135,22 +136,74 @@ namespace webapi.filmes.manha.Lucas.Controllers
 
         }
 
-        [HttpPatch("{id}")]
+        [HttpPut("{id}")]
 
-        public IActionResult AtualizarIdUrl(int id,GeneroDomain genero)
+        public IActionResult AtualizarIdUrl(int id, GeneroDomain genero)
         {
             try
             {
-              genro
-            }
-            catch (Exception)
-            {
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(genero.IdGenero);
 
-                throw;
+                if (generoBuscado != null)
+                {
+                    try
+                    {
+
+                        _generoRepository.AtualizarIdUrl(id, genero);
+                        return StatusCode(200);
+                    }
+                    catch (Exception erro)
+                    {
+
+                        return BadRequest(erro.Message);
+                    }
+
+                }
+                throw new Exception();
+
             }
+            catch (Exception Erro)
+            {
+                BadRequest(Erro.Message);
+            }
+
+            return BadRequest();
+        }
+
+        [HttpPut]
+
+        public IActionResult AtualizarIdCorpo(GeneroDomain genero)
+        {
+            try
+            {
+                GeneroDomain generoBuscado = _generoRepository.BuscarPorId(genero.IdGenero);
+
+                if (generoBuscado != null)
+                {
+                    try
+                    {
+
+                        _generoRepository.AtualizarIdCorpo(genero);
+                        return NoContent();
+
+                    }
+                    catch (Exception Erro)
+                    {
+                        return BadRequest(Erro.Message);
+                    }
+
+                }
+                throw new Exception();
+
+            }
+            catch (Exception Erro)
+            {
+                return BadRequest(400);
+            }
+
         }
 
 
 
-    } 
+    }
 }
