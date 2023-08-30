@@ -10,8 +10,6 @@ namespace webapi.filmes.manha.Lucas.Repositorys
     {
         private string StringConexao = "Data Source = NOTE08-S14; Initial Catalog = Filmes; User ID = sa; Pwd=Senai@134";
 
-        public GeneroDomain Nome { get; private set; }
-
         public List<GeneroDomain> ListarTodos()
         {
             List<GeneroDomain> ListaGenero = new List<GeneroDomain>();
@@ -24,7 +22,7 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 
                 SqlDataReader rdr;
 
-                using (SqlCommand cmd = new SqlCommand(querySelectAll,con))
+                using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
 
                 {
                     rdr = cmd.ExecuteReader();
@@ -40,7 +38,7 @@ namespace webapi.filmes.manha.Lucas.Repositorys
 
                         ListaGenero.Add(genero);
                     }
-                
+
                 }
 
             }
@@ -52,16 +50,16 @@ namespace webapi.filmes.manha.Lucas.Repositorys
         /// Cadastrar um novo gênero
         /// </summary>
         /// <param name="novoGenero">Objeto com as informações que serão cadastradas</param>
-          public void Cadastrar(GeneroDomain novoGenero)
+        public void Cadastrar(GeneroDomain novoGenero)
         {
             //Declara a conexão com o BAnco de Dados passando a string de conexão como parâmetro
-           using(SqlConnection con = new SqlConnection(StringConexao)) 
+            using (SqlConnection con = new SqlConnection(StringConexao))
             {
-                                                               // Anti Sql Injection
+                // Anti Sql Injection
                 string queryInsert = "INSERT INTO Genero(Nome) VALUES(@Nome)";
-      
+
                 //Declara o SqlCommand passando a query que será executada e a conexão com o bd
-                using(SqlCommand cmd = new SqlCommand(queryInsert, con))
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
                 {
 
                     cmd.Parameters.AddWithValue("@Nome", novoGenero.Nome);
@@ -70,7 +68,7 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                     con.Open();
 
                     //Comando que executa a query (queryInsert)
-                    cmd.ExecuteNonQuery();  
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
@@ -83,19 +81,19 @@ namespace webapi.filmes.manha.Lucas.Repositorys
             {
                 string queryDelete = "DELETE FROM Genero WHERE IdGenero = @IdGenero";
 
-                using(SqlCommand cmd = new SqlCommand(queryDelete, con))
+                using (SqlCommand cmd = new SqlCommand(queryDelete, con))
                 {
-                    cmd.Parameters.AddWithValue("@IdGenero",id);
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
 
                     con.Open();
 
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
 
 
                 }
-            } ;
+            };
 
-     
+
         }
 
         /// <summary>
@@ -113,9 +111,9 @@ namespace webapi.filmes.manha.Lucas.Repositorys
             {
                 string queryBuscarPorId = "SELECT IdGenero, Nome FROM Genero WHERE IdGenero = @IdGenero ";
 
-            con.Open();
+                con.Open();
 
-            SqlDataReader rdr;
+                SqlDataReader rdr;
 
                 using (SqlCommand cmd = new SqlCommand(queryBuscarPorId, con))
                 {
@@ -135,16 +133,16 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                         };
 
                         return generoBuscado;
-                }
+                    }
                     return null;
-                       
 
-                    
+
+
+                }
             }
+
+
         }
-
-
-    }
 
         public void AtualizarIdCorpo(GeneroDomain genero)
         {
@@ -160,11 +158,11 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                     cmd.Parameters.AddWithValue("@IdGenero", genero.IdGenero);
                     cmd.Parameters.AddWithValue("@Nome", genero.Nome);
 
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
 
                 }
             }
-          
+
         }
 
         public void AtualizarIdUrl(int id, GeneroDomain genero)
@@ -182,16 +180,16 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                     cmd.Parameters.AddWithValue("@Nome", genero.Nome);
 
                     cmd.ExecuteNonQuery();
-                   
+
                 }
 
                ;
 
 
-            } ;
+            };
 
         }
-    
-    
+
+
     }
-    }
+}

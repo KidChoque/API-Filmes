@@ -9,7 +9,7 @@ namespace webapi.filmes.manha.Lucas.Controllers
 {
     //Definie que a rota de uma requisição será no seguinte formato
     //domínio/api/nomeController
-    //ex: http://localhost:5000/api/genero
+    //ex: https://localhost:7156/api/Filmes
 
     [Route("api/[controller]")]
 
