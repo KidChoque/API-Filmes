@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using webapi.filmes.manha.Lucas.Domains;
 using webapi.filmes.manha.Lucas.Interface;
 using webapi.filmes.manha.Lucas.Repositorys;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace webapi.filmes.manha.Lucas.Controllers
 
@@ -46,12 +47,132 @@ namespace webapi.filmes.manha.Lucas.Controllers
             }
         }
 
+        [HttpPost]
+
+        public IActionResult InserirFilme(FilmeDomain novoFilme)
+        {
+            try
+            {
+                _filmeRepository.Cadastrar(novoFilme);
+                return StatusCode(201);
+            }
+            catch (Exception Erro)
+            {
+
+                return BadRequest(Erro.Message);
+            }
+        }
+
+
+
+        [HttpGet("{id}")]
+        public IActionResult BuscarPorId(int id)
+        {
+            try
+            {
+                FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(id);
+
+                if (filmeBuscado == null)
+                {
+                    return NotFound("Nenhum filme foi encontrado");
+                }
+                return Ok(filmeBuscado);
+            }
+            catch (Exception Erro)
+            {
+
+                return BadRequest(Erro.Message);
+            }
+        }
+
+        [HttpDelete]
+        public IActionResult DeletarFilme(int id)
+        {
+            try
+            {
+                _filmeRepository.Deletar(id);
+                return Ok(200);
+            }
+            catch (Exception Erro)
+            {
+
+                return BadRequest(Erro.Message); 
+            }
+        }
+
+        [HttpPut]
+        public IActionResult AtualizarIdCorpo(FilmeDomain filme)
+        {
+            try
+            {
+                FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(filme.IdFilme);
+                if (filmeBuscado != null)
+                {
+                    try
+                    {
+                        _filmeRepository.AtualizarIdCorpo(filme);
+
+                        return NoContent();
+                    }
+                    catch (Exception Erro)
+                    {
+
+                        return BadRequest(Erro.Message);
+                    }
+                }
+                return NotFound();
+            }
+            catch (Exception Erro)
+            {
+
+                return BadRequest(Erro.Message);
+            }
+
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult AtualizarIdUrl(int id, FilmeDomain filme)
+        {
+            FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(filme.IdFilme);
+            try
+            {
+                if (filmeBuscado != null)
+                {
+                    try
+                    {
+                        _filmeRepository.AtualizarIdUrl(id, filme);
+                        return StatusCode(201);
+                    }
+                    catch (Exception Erro)
+                    {
+
+                        return BadRequest(Erro.Message);
+                    }
+                }
+                throw new Exception();
+            }
+            catch (Exception Erro)
+            {
+
+                return BadRequest(Erro.Message);
+            }
+          
+
+        }
+
     }
-}
-
-
-
-
-
 
     
+    }
+
+
+
+
+
+
+
+
+
+
+
