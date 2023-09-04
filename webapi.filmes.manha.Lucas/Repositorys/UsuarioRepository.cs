@@ -20,7 +20,7 @@ namespace webapi.filmes.manha.Lucas.Repositorys
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Senha", senha);
 
-                    SqlDataReader rdr = cmd.ExecuteReader();
+                    SqlDataReader rdr = cmd.ExecuteReader();    
 
                     if (rdr.Read())
                     {
