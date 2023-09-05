@@ -38,3 +38,11 @@ C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.
 C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\obj\Debug\net7.0\webapi.filmes.manha.Lucas.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\webapi.filmes.manha.Lucas.xml
 C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\obj\Debug\net7.0\webapi.filmes.manha.Lucas.xml
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\53297269804\Desktop\API-Manha\webapi.filmes.manha.Lucas\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

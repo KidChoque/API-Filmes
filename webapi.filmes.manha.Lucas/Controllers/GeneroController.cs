@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.filmes.manha.Lucas.Domains;
 using webapi.filmes.manha.Lucas.Interface;
@@ -42,7 +43,7 @@ namespace webapi.filmes.manha.Lucas.Controllers
         /// </summary>
         /// <returns>Resposta para o usuário(front-end)</returns>
         [HttpGet]
-
+        [Authorize(Roles = "Administrador,Comum")]
 
         //ListarGwnero=GET
         public IActionResult ListarGenero()
@@ -74,6 +75,7 @@ namespace webapi.filmes.manha.Lucas.Controllers
         /// <param name="novoGenero">Objeto recebido na requisição</param>
         /// <returns>status code 201(Created)</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult InserirGenero(GeneroDomain novoGenero)
         {
             try

@@ -61,10 +61,10 @@ namespace webapi.filmes.manha.Lucas.Controllers
                 var token = new JwtSecurityToken
                     (
                     //Emissor de token
-                    issuer: "webapi.filmes.manha",
+                    issuer: "webapi.filmes.manha.Lucas",
 
                     //Destinatário do token
-                    audience: "webapi.filmes.manha",
+                    audience: "webapi.filmes.manha.Lucas",
 
                     //dados definidos nas claims(informações)
                     claims : claims,
